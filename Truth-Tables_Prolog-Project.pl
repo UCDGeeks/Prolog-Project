@@ -7,8 +7,12 @@
 
 % Create Boolian Values for and, or, & not
 bool_not(0,1).
-bool_not (1,0).
-bool_or (0,1).
-bool_or (1,0).
-bool_and (0,1).
-bool_and (1,0).
+bool_not(1,0).
+bool_and(0,0,0).
+bool_and(1,0,0).
+bool_and(1,1,1).
+bool_and(0,1,0).
+bool_or(0,0,0).
+bool_or(1,0,1).
+bool_or(1,0,1).
+bool_or(1,1,1).
