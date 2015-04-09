@@ -5,6 +5,11 @@
 :- operation(1000,inf,'or').
 :- operation(900,una,'not').
 
+%Find the initial assignments
+initial_assignment1([],[]).
+initial_assignmet1([_X|R],[0|S]) :- initial_assignment1(R,S).
+
+
 % Changes the truth assignments by doing a binary addition with 1
 next([0|R],[1|R]).
 next([1|R],[0|S]) :- next(R,S).
