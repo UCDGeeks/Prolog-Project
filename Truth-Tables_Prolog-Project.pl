@@ -62,7 +62,15 @@ truth_value(not X,Vars,A,Val) :-   truth_value(X,Vars,A,VX),
 
 
 
-
+% Generates the truth table
+% Profile: find_vars(+The_Expression,+Previously_Found_Variables,-Answer)
+tt(E) :- find_vars(E,[],V),
+         reverse(V,Vars),
+         initial_assign(Vars,A),
+         write('  '), write(Vars), write('    '), write(E), nl,
+         write('-----------------------------------------'), nl,
+         write_row(E,Vars,A),
+         write('-----------------------------------------'), nl.
 
 
 %print things
