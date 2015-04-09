@@ -48,9 +48,15 @@ boole_or(1,1,1).
 boole_not(0,1).
 boole_not(1,0).
 
+% Returns the truth value for the passed expression
+truth_value(N,_,_,N) :- member(N,[0,1]).
+truth_value(X,Vars,A,Val) :- atom(X),
+                             lookup(X,Vars,A,Val).
+
+
 %print things
 
-write_a_row(E,Vars,A) :- write('  '), write(A), write('        '), 
+write_a_row(E,Vars,A) :- write('  '), write(A), write('        '),
                        truth_value(E,Vars,A,V), write(V), nl,
                        (successor(A,N) -> write_row(E,Vars,N) ; true).
 
