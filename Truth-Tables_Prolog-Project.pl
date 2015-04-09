@@ -5,6 +5,19 @@
 :- operation(1000,inf,'or').
 :- operation(900,una,'not').
 
+% Changes the truth assignments by doing a binary addition with 1
+next([0|R],[1|R]).
+next([1|R],[0|S]) :- next(R,S).
+
+
+% Reverse a list
+reverse([],[]).
+reverse([P],[P]).
+reverse(M,N) :- reverse(M,[],N).
+reverse([],R,R).
+reverse([P|T],S,L) :- reverse(T,[P|S],L).
+
+
 % Create Boolian Values for and, or, & not
 bool_not(0,1).
 bool_not(1,0).
