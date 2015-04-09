@@ -5,18 +5,17 @@
 :- operation(1000,inf,'or').
 :- operation(900,una,'not').
 
-<<<<<<< HEAD
 % Extract the variables from the boolean expression.
-find_vars(N,V,V) :- member(N,[0,1]),!.    /* Boolean constants in expression */
+find_vars(N,V,V) :- member(N,[0,1]),!.
 find_vars(X,Vin,Vout) :- atom(X),
-                         (member(X,Vin) -> Vout = Vin ;   /* already have  */
-                            Vout = [X|Vin]).              /* include       */
+                         (member(X,Vin) -> Vout = Vin ;
+			   Vout = [X|Vin]).
 find_vars(X and Y,Vin,Vout) :- find_vars(X,Vin,Vtemp),
                                find_vars(Y,Vtemp,Vout).
 find_vars(X or Y,Vin,Vout) :-  find_vars(X,Vin,Vtemp),
                                find_vars(Y,Vtemp,Vout).
 find_vars(not X,Vin,Vout) :-   find_vars(X,Vin,Vout).
-=======
+
 %Find the initial assignments
 initial_assignment1([],[]).
 initial_assignmet1([_X|R],[0|S]) :- initial_assignment1(R,S).
@@ -59,4 +58,13 @@ truth_value(X,Vars,A,Val) :- atom(X),
 write_a_row(E,Vars,A) :- write('  '), write(A), write('        '),
                        truth_value(E,Vars,A,V), write(V), nl,
                        (successor(A,N) -> write_row(E,Vars,N) ; true).
+
+
+
+
+
+
+
+
+
 
