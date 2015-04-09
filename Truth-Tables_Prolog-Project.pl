@@ -57,8 +57,6 @@ truth_value(X and Y,Vars,A,Val) :- truth_value(X,Vars,A,VX),
 truth_value(X or Y,Vars,A,Val) :-  truth_value(X,Vars,A,VX),
                                    truth_value(Y,Vars,A,VY),
                                    boole_or(VX,VY,Val).
-truth_value(not X,Vars,A,Val) :-   truth_value(X,Vars,A,VX),
-                                   boole_not(VX,Val).
 
 
 
