@@ -57,6 +57,8 @@ truth_value(X and Y,Vars,A,Val) :- truth_value(X,Vars,A,VX),
 truth_value(X or Y,Vars,A,Val) :-  truth_value(X,Vars,A,VX),
                                    truth_value(Y,Vars,A,VY),
                                    boole_or(VX,VY,Val).
+truth_value(not X,Vars,A,Val) :-   truth_value(X,Vars,A,VX),
+                                   boole_not(VX,Val).
 
 
 
@@ -65,7 +67,11 @@ truth_value(X or Y,Vars,A,Val) :-  truth_value(X,Vars,A,VX),
 tt(E) :- find_vars(E,[],V),
          reverse(V,Vars),
          initial_assign(Vars,A),
-         
+         write('  '), write(Vars), write('    '), write(E), nl,
+         write('-----------------------------------------'), nl,
+         write_row(E,Vars,A),
+         write('-----------------------------------------'), nl.
+
 
 
 %print things
@@ -75,10 +81,6 @@ write_a_row(E,Vars,A) :- write('  '), write(A), write('        '),
                        (successor(A,N) -> write_row(E,Vars,N) ; true).
 
 
-write('  '), write(Vars), write('    '), write(E), nl,
-         write('-----------------------------------------'), nl,
-         write_row(E,Vars),
-         write('-----------------------------------------'), nl.
 
 
 
