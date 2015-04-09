@@ -51,6 +51,15 @@ boole_not(1,0).
 truth_value(N,_,_,N) :- member(N,[0,1]).
 truth_value(X,Vars,A,Val) :- atom(X),
                              lookup(X,Vars,A,Val).
+truth_value(X and Y,Vars,A,Val) :- truth_value(X,Vars,A,VX),
+                                   truth_value(Y,Vars,A,VY),
+                                   boole_and(VX,VY,Val).
+truth_value(X or Y,Vars,A,Val) :-  truth_value(X,Vars,A,VX),
+                                   truth_value(Y,Vars,A,VY),
+                                   boole_or(VX,VY,Val).
+
+
+
 
 
 %print things
