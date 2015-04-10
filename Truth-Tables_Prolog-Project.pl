@@ -1,9 +1,10 @@
-% Team D2Real
+% Team D2Real NSBM-CS Batch
 
-% Create operators.
-:- operation(1000,inf,'and').
-:- operation(1000,inf,'or').
-:- operation(900,una,'not').
+% Create operators. 'inf'=infix, 'una'=unary
+:- op(1000,inf,'and').
+:- op(1000,inf,'or').
+:- op(900,una,'not').
+
 
 % Extract the variables from the boolean expression.
 find_vars(N,V,V) :- member(N,[0,1]),!.
@@ -74,7 +75,7 @@ tt(E) :- find_vars(E,[],V),
 
 
 
-%print things
+% print things
 
 write_a_row(E,Vars,A) :- write('  '), write(A), write('        '),
                        truth_value(E,Vars,A,V), write(V), nl,
