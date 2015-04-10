@@ -34,7 +34,7 @@ reverse(M,N) :- reverse(M,[],N).
 reverse([],R,R).
 reverse([P|T],S,L) :- reverse(T,[P|S],L).
 
->>>>>>> f04ca99c6f88ab88ba2fac92393da3a8c088e099
+
 
 % Create Boolian Values for and, or, & not
 boole_and(0,0,0).
