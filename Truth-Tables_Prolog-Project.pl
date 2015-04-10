@@ -26,10 +26,10 @@ next([1|R],[0|S]) :- next(R,S).
 
 % Reverse a list
 reverse([],[]).
-reverse([H],[H]).
+reverse([P],[P]).
 reverse(A,B) :- reverse(A,[],B).
 reverse([],R,R).
-reverse([H|T],S,L) :- reverse(T,[H|S],L).
+reverse([P|T],S,L) :- reverse(T,[P|S],L).
 
 % The next set of truth table values
 successor(A,S) :- reverse(A,R),
@@ -62,9 +62,11 @@ truth_value(not X,Vars,A,Val) :-   truth_value(X,Vars,A,VX),
                                    boolean_not(VX,Val).
 
 
+% List of values and List of keys Lists The last parameter as the output parameters.
+lookup(X,[X|_],[V|_],V).
+lookup(X,[_|Vars],[_|A],V) :- lookup(X,Vars,A,V).
 
-% Generates the truth table
-% Profile: find_vars(+The_Expression,+Previously_Found_Variables,-Answer)
+% Truth table Generating 
 tt(E) :- find_vars(E,[],V),
          reverse(V,Vars),
          initial_assign(Vars,A),
