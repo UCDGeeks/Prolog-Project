@@ -37,13 +37,20 @@ reverse([P|T],S,L) :- reverse(T,[P|S],L).
 >>>>>>> f04ca99c6f88ab88ba2fac92393da3a8c088e099
 
 % Create Boolian Values for and, or, & not
-bool_not(0,1).
-bool_not(1,0).
-bool_and(0,0,0).
-bool_and(1,0,0).
-bool_and(1,1,1).
-bool_and(0,1,0).
-bool_or(0,0,0).
-bool_or(1,0,1).
-bool_or(1,0,1).
-bool_or(1,1,1).
+boole_and(0,0,0).
+boole_and(0,1,0).
+boole_and(1,0,0).
+boole_and(1,1,1).
+boole_or(0,0,0).
+boole_or(0,1,1).
+boole_or(1,0,1).
+boole_or(1,1,1).
+boole_not(0,1).
+boole_not(1,0).
+
+%print things
+
+write_a_row(E,Vars,A) :- write('  '), write(A), write('        '), 
+                       truth_value(E,Vars,A,V), write(V), nl,
+                       (successor(A,N) -> write_row(E,Vars,N) ; true).
+
