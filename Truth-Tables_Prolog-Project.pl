@@ -1,11 +1,11 @@
-% Team D2Real NSBM-CS Batch.04
+% ___Team D2Real(02) NSBM-CS Batch.04___
 
 % Create operators. 'inf'=infix, 'una'=unary
 :- op(1000,inf,'and').
 :- op(1000,inf,'or').
 :- op(900,una,'not').
 
-% Extract the variables from the boolean expression.
+% Variables Extract from the boolean expression.
 find_vars(N,V,V) :- member(N,[0,1]),!.
 find_vars(X,Vin,Vout) :- atom(X),
                          (member(X,Vin) -> Vout = Vin ;
@@ -61,7 +61,6 @@ truth_value(X or Y,Vars,A,Val) :-  truth_value(X,Vars,A,VX),
 truth_value(not X,Vars,A,Val) :-   truth_value(X,Vars,A,VX),
                                    boolean_not(VX,Val).
 
-
 % List of values and List of keys Lists The last parameter as the output parameters.
 lookup(X,[X|_],[V|_],V).
 lookup(X,[_|Vars],[_|A],V) :- lookup(X,Vars,A,V).
@@ -75,20 +74,11 @@ tt(E) :- find_vars(E,[],V),
          write_row(E,Vars,A),
          write('-----------------------------------------'), nl.
 
-
-
 % print things
-
 write_a_row(E,Vars,A) :- write('  '), write(A), write('        '),
                        truth_value(E,Vars,A,V), write(V), nl,
                        (successor(A,N) -> write_row(E,Vars,N) ; true).
 
 
-
 % How to use:
 % tt(x or (not y  and z)).
-
-
-
-
-
