@@ -75,7 +75,7 @@ tt(E) :- find_vars(E,[],V),
          write('-----------------------------------------'), nl.
 
 % print things
-write_a_row(E,Vars,A) :- write('  '), write(A), write('        '),
+write_row(E,Vars,A) :- write('  '), write(A), write('        '),
                        truth_value(E,Vars,A,V), write(V), nl,
                        (successor(A,N) -> write_row(E,Vars,N) ; true).
 
