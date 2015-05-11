@@ -1,9 +1,9 @@
 % ___Team D2Real(02) NSBM-CS Batch.04___
 
 % Create operators. 'inf'=infix, 'una'=unary
-:- op(1000,inf,'and').
-:- op(1000,inf,'or').
-:- op(900,una,'not').
+:- op(1000,xfy,'and').
+:- op(1000,xfy,'or').
+:- op(900,fy,'not').
 
 % Variables Extract from the boolean expression.
 find_vars(N,V,V) :- member(N,[0,1]),!.
